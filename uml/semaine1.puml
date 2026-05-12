@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam style strictuml
+hide empty members
+
+package inscryption
+{
+}
+
+package game
+{
+}
+
+package carte
+{
+    class Carte
+    {
+        #m_nom : String
+        #m_pv : Integer
+        +<<create>> Carte()
+    }
+
+    class CarteObstacle <<abstract>>
+    {
+       +<<create>> CarteObstacle()
+    }
+
+    class CarteAnimal <<abstract>>
+    {
+        #m_attaque : Integer
+        #m_gouttesDeSang : Integer
+        #m_os : Integer
+        #m_bVolant : Boolean
+        +<<create>> CarteAnimal(String nom, Integer pv, Integer attk, Integer gouttes, Integer os, Boolean bVolant)
+    }
+}
+
+CarteAnimal --|> Carte : <<extends>>
+CarteObstacle --|> Carte : <<extends>>
+
+@enduml
