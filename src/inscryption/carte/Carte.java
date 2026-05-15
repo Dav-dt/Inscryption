@@ -10,4 +10,16 @@ public abstract class Carte
         m_nom = nom;
         m_pv = pv;
     }
+
+    public String getNom()
+    {
+        return m_nom;
+    }
+
+    public int getPv()
+    {
+        return m_pv;
+    }
+
+    public abstract String getInfos();
 }

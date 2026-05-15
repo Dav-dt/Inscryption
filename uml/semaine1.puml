@@ -11,6 +11,48 @@ package inscryption
 
 package game
 {
+    class Game <<Final>>
+    {
+        -NB_DE_PARTIES_POUR_GAGNER : Integer
+        -NB_DE_POINTS_POUR_GAGNER_PARTIE : Integer
+        +<<create>> Game()
+        +lancerJeu() : void
+    }
+
+    class Joueur
+    {
+        -m_main : List<CarteAnimal>
+        -m_pioche : Pioche
+        -m_score : Integer
+        -NB_MIN_MAIN : Integer
+        +<<create>> Joueur()
+        +afficherMain() : void
+    }
+
+    class Pioche
+    {
+        +<<create>> Pioche()
+    }
+
+    class Plateau
+    {
+        -NB_CARTES_PAR_LIGNE : Integer
+        -m_plateau : Map<Position, Optional<Carte>>
+        +<<create>> Plateau()
+        +afficherPlateau() : void
+    }
+
+    enum Position
+    {
+        A1,
+        A2,
+        A3,
+        A4,
+        B1,
+        B2,
+        B3,
+        B4
+    }
 }
 
 package carte
@@ -20,20 +62,30 @@ package carte
         #m_nom : String
         #m_pv : Integer
         +<<create>> Carte()
+        +<<create>> Carte(String nom, Integer pv)
+        +getNom() : String
+        +getPv() : Integer
+        +getInfos() : String
     }
 
-    class CarteObstacle <<abstract>>
+    class CarteObstacle
     {
        +<<create>> CarteObstacle()
+       +<<create>> CarteObstacle(String nom, Integer pv)
+       +getInfos() : String
     }
 
-    class CarteAnimal <<abstract>>
+    class CarteAnimal
     {
         #m_attaque : Integer
         #m_gouttesDeSang : Integer
         #m_os : Integer
         #m_bVolant : Boolean
         +<<create>> CarteAnimal(String nom, Integer pv, Integer attk, Integer gouttes, Integer os, Boolean bVolant)
+        +getOs() : Integer
+        +getGouttesDeSang() : Integer
+        +getAtt() : Integer
+        +getInfos() : String
     }
 
     class CarteFactory
@@ -41,13 +93,21 @@ package carte
         -<<create>>
         +{static}creerCarteAnimal(TypeAnimal) : CarteAnimal
         +{static}creerCarteObstacle(TypeObstacle) : CarteObstacle
+        +{static}creerCarteAnimalRandom() : CarteAnimal
     }
 
     enum TypeAnimal
     {
+        CHAT,
         GRIZZLY,
+        COYOTE,
         MOINEAU,
-        ...
+        CORBEAU,
+        ECUREUIL,
+        HERMINE,
+        LOUVETEAU,
+        LOUP,
+        PUNAISE
     }
 
     enum TypeObstacle
@@ -58,14 +118,25 @@ package carte
 
 }
 
+class Main
+{
+    +main(String[]) : void
+}
+
 CarteFactory --|> TypeAnimal : <<uses>>
 CarteFactory --|> TypeObstacle : <<uses>>
 CarteFactory --|> CarteAnimal : <<uses>>
 CarteFactory --|> CarteObstacle : <<uses>>
 
-
-
 CarteAnimal --|> Carte : <<extends>>
 CarteObstacle --|> Carte : <<extends>>
+
+Game --> Joueur : <<uses>>
+Game --> Plateau : <<uses>>
+Joueur --> CarteAnimal : <<has>>
+Joueur --> Pioche : <<has>>
+Plateau --> Carte : <<has>>
+Plateau --|> Position : <<uses>>
+Main --> Game : <<uses>>
 
 @enduml

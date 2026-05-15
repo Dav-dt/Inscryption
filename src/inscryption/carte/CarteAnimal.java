@@ -16,4 +16,25 @@ public class CarteAnimal extends Carte
         m_bVolant = volant;
 
     }
+
+    public int getOs()
+    {
+        return m_os;
+    }
+
+    public int getGouttesDeSang()
+    {
+        return m_gouttesDeSang;
+    }
+
+    public int getAtt()
+    {
+        return m_attk;
+    }
+
+    @Override
+    public String getInfos() {
+        return "["+m_nom+"] PV: "+m_pv+ " Att: "+m_attk+
+                (m_bVolant ? " Volant" : " Non Volant");
+    }
 }
