@@ -1,5 +1,7 @@
 package inscryption.carte;
 
+import java.util.Random;
+
 public class CarteFactory
 {
     private CarteFactory() {};
@@ -121,5 +123,15 @@ public class CarteFactory
             default:
                 return null;
         }
+    }
+
+    public static CarteAnimal creerCarteAnimalRandom()
+    {
+        TypeAnimal[] types = TypeAnimal.values();
+        Random random = new Random();
+
+        TypeAnimal typeAleatoire = types[random.nextInt(types.length)];
+
+        return creerCarteAnimal(typeAleatoire);
     }
 }
