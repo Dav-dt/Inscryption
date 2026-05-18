@@ -8,7 +8,6 @@ import java.util.*;
 
 public class Pioche
 {
-
     private final int NB_MAX_CARTES = 15;
 
     // Plage de recherches du nombre de cartes écureuils
