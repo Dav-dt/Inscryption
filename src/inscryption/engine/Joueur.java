@@ -19,8 +19,13 @@ public class Joueur
         m_score = 0;
         for ( int i = 0 ; i < NB_MIN_MAIN; i++ )
         {
-            m_main.add(CarteFactory.creerCarteAnimalRandom());
+            m_main.add(m_pioche.piocher());
         }
+    }
+
+    public void piocherCarte()
+    {
+        m_main.add(m_pioche.piocher());
     }
 
     public void afficherMain()
@@ -33,8 +38,8 @@ public class Joueur
                     " Gouttes de sang: "+m_main.get(i).getGouttesDeSang()+
                     " Os: "+m_main.get(i).getOs());
         }
+        m_pioche.afficherPioche();
     }
-
 
 
 }
