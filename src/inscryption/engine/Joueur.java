@@ -1,5 +1,6 @@
 package inscryption.engine;
 
+import inscryption.carte.Carte;
 import inscryption.carte.CarteAnimal;
 import inscryption.carte.CarteFactory;
 
@@ -13,15 +14,17 @@ public class Joueur
     private List<CarteAnimal> m_main = new ArrayList<CarteAnimal>();
     private Pioche m_pioche = new Pioche();
     private int m_score;
-
     private int m_nb_espace_nom_carte;
+
+    public static final List<String> ACTIONS_POSSIBLES = List.of("placer",
+            "fin","piocher");
 
     public Joueur()
     {
         m_score = 0;
         for ( int i = 0 ; i < NB_MIN_MAIN; i++ )
         {
-            m_main.add(m_pioche.piocher());
+            piocher();
         }
     }
 
@@ -48,6 +51,32 @@ public class Joueur
         }
 
         return res;
+    }
+
+    public void piocher()
+    {
+        m_main.add(m_pioche.piocher());
+    }
+
+    public void placerCarte(CarteAnimal c, Plateau p, Position pos) throws Exception
+    {
+        if ( peutPlacerCarte(c, p, pos) )
+            p.positionnerCarte(c,pos);
+
+    }
+
+    private boolean peutPlacerCarte(CarteAnimal c, Plateau p, Position pos) throws Exception
+    {
+        boolean valide = false;
+        if ( !p.getPlateau().containsKey(pos) )
+            throw new Exception("La position n'existe pas !");
+
+        if ( p.getPlateau().get(pos).isPresent() )
+            return valide;
+
+        valide = true;
+
+        return valide;
     }
 
 }

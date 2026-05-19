@@ -23,6 +23,11 @@ public class Plateau
         entry(Position.B3, Optional.empty()),
         entry(Position.B4, Optional.empty())));
 
+    public Map<Position, Optional<Carte>> getPlateau()
+    {
+        return m_plateau;
+    }
+
     public Plateau()
     {
         int nbObstacles = new Random().nextInt(0, NB_MAX_OBSTACLE + 1);
