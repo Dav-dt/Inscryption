@@ -26,6 +26,20 @@ public abstract class Carte
 
     public abstract String getInfos();
 
+    public abstract String getToutesInfosCarte();
+
+    public String nbEspacesMots(Carte carte)
+    {
+        int nbEspace = carte.getNbMaxCaractere() - carte.getNbLettres();
+        String res = "";
+        for (int i = 0; i < nbEspace; i++)
+        {
+            res += " ";
+        }
+
+        return res;
+    }
+
     public int getNbLettres()
     {
         return m_nom.length();

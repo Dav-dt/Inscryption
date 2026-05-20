@@ -35,18 +35,17 @@ public class Joueur
 
     public void afficherMain()
     {
-        System.out.println("Votre main : ");
+        System.out.println("\nVotre main : ");
         for ( int i = 0; i < m_main.size(); i++ )
         {
-            System.out.println(i+1+ ". "+m_main.get(i).getNom() + nbEspacesMots(m_main.get(i)) + "  PV: "+
-                    m_main.get(i).getPv()+ "    Att: "+m_main.get(i).getAtt()+
-                    "   Gouttes de sang: "+m_main.get(i).getGouttesDeSang()+
-                    "   Os: "+m_main.get(i).getOs());
+
+            System.out.println(i+1+ ". "+m_main.get(i).getToutesInfosCarte());
+
         }
         m_pioche.afficherPioche();
     }
 
-    public String nbEspacesMots(CarteAnimal carte)
+    public String nbEspacesMots(Carte carte)
     {
         int nbEspace = carte.getNbMaxCaractere() - carte.getNbLettres();
         String res = "";
@@ -84,19 +83,28 @@ public class Joueur
             {
                 System.out.println("Quelle(s) carte(s) voulez-vous sacrifier ?\n");
                 p.afficherPlateau();
-                int i = 0;
+                int nbCartes = 1;
+                String texteInfosCartes = "\n";
+                String texteActionsPossibles = "";
                 // Parcours des positions du tableau
                 for (Map.Entry<Position, Optional<Carte>> entry : p.getPlateau().entrySet())
                 {
                     // on ne veut parcourir que les cases sur lesquelles le joueur peut poser des cartes
                     if (entry.getKey().name().startsWith("B"))
                     {
+                        // Si elles existent, on les affiche
                         if (entry.getValue().isPresent())
                         {
-
+                            // mise en forme de l'affichage
+                            texteInfosCartes += nbCartes + ". " + entry.getValue().get().getToutesInfosCarte() + "\n";
+                            texteActionsPossibles += "[" + nbCartes + "]\n";
                         }
                     }
                 }
+                // Affichage final des cartes que l'on peut sacrifier
+                System.out.println(texteInfosCartes + "\n Indiquez votre choix : \n" + texteActionsPossibles);
+
+
 
             }
         }
