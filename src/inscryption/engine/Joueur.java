@@ -16,6 +16,9 @@ public class Joueur
     private int m_score;
     private int m_nb_espace_nom_carte;
 
+    private int m_nbOsTotal;
+    private int m_nbGouttesDeSangTotal;
+
     public static final List<String> ACTIONS_POSSIBLES = List.of("placer",
             "fin","piocher");
 
@@ -26,6 +29,9 @@ public class Joueur
         {
             piocher();
         }
+
+        m_nbGouttesDeSangTotal = 0;
+        m_nbOsTotal = 0;
     }
 
     public void afficherMain()
@@ -81,6 +87,19 @@ public class Joueur
         valide = true;
 
         return valide;
+    }
+
+    private void Sacrifier(Plateau p, Position pos) throws Exception {
+        if ( !p.getPlateau().containsKey(pos) )
+        {
+            throw new Exception("Il n'y a rien à sacrifier !");
+        }
+
+        m_nbOsTotal++;
+        m_nbGouttesDeSangTotal++;
+
+
+
     }
 
 }

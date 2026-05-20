@@ -26,28 +26,14 @@ public final class Game
             System.out.println("[placer] <numero carte> <position> Placer " +
                     "une carte sur la plateau");
 
-            boolean valide = false;
-            do {
-                Scanner scan = new Scanner(System.in);
-                String choix = scan.nextLine();
+            Scanner sc = new Scanner(System.in);
+            Input input = new Input(sc.nextLine());
 
-                for (String option : Joueur.ACTIONS_POSSIBLES) {
-                    if (option.contains(choix)) {
-                        valide = true;
-                    }
-                }
+            while ( !input.tryExecuteInput() )
+            {
+                input.changerInput(sc.nextLine());
+            }
 
-                System.out.println("Veuillez entrer un choix valide");
-            } while (!valide);
-
-        }
-    }
-
-    public void tryExecuteInput(String input)
-    {
-        if ( input.equals("piocher") )
-        {
-            m_joueur.piocher();
         }
     }
 }

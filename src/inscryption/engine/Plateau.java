@@ -57,6 +57,11 @@ public class Plateau
         m_plateau.put(pos, Optional.of(carte));
     }
 
+    public void retirerCarteA(Position p)
+    {
+        m_plateau.put(p,Optional.empty());
+    }
+
     public void afficherPlateau()
     {
         Position[] ligneAdversaire = {Position.A1, Position.A2, Position.A3,

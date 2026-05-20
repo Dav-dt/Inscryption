@@ -1,4 +1,8 @@
 package inscryption.engine;
 
-public enum InputsPossibles {
+public enum InputsPossibles
+{
+    PLACER,
+    FIN,
+    PIOCHER
 }
