@@ -37,4 +37,13 @@ public class CarteAnimal extends Carte
         return "["+m_nom+"] PV: "+m_pv+ " Att: "+m_attk+
                 (m_bVolant ? " Volant" : " Non Volant");
     }
+
+    @Override
+    public String getToutesInfosCarte(){
+        return m_nom + nbEspacesMots(this) + "  PV: "+
+                m_pv+ "    Att: "+m_attk+
+                "   Gouttes de sang: "+ m_gouttesDeSang+
+                "   Os: "+m_os +
+                (m_bVolant ? "   Volant" : "   Non Volant");
+    }
 }

@@ -28,7 +28,6 @@ public final class Game
 
             Scanner sc = new Scanner(System.in);
             Input input = new Input(sc.nextLine());
-
             while ( !input.tryExecuteInput() )
             {
                 input.changerInput(sc.nextLine());

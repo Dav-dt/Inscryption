@@ -10,4 +10,9 @@ public class CarteObstacle extends Carte
     public String getInfos() {
         return "["+m_nom+"] PV:"+m_pv;
     }
+
+    @Override
+    public String getToutesInfosCarte(){
+        return m_nom + nbEspacesMots(this) + "  PV : " + m_pv;
+    }
 }
