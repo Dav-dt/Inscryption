@@ -5,17 +5,13 @@ import inscryption.carte.CarteAnimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Adversaire {
+public class Adversaire extends Entite{
     private final int NB_MIN_MAIN = 4;
 
     private List<CarteAnimal> m_main = new ArrayList<CarteAnimal>();
     private Pioche m_pioche = new Pioche();
-    private int m_score;
 
-    public Adversaire()
-    {
-        m_score = 0;
-    }
+    public Adversaire() { m_score = 0; }
 
     private boolean peutPlacerCarte(CarteAnimal c, Plateau p, Position pos) throws Exception
     {
@@ -29,5 +25,10 @@ public class Adversaire {
         valide = true;
 
         return valide;
+    }
+
+    public void afficherProchain(Plateau p)
+    {
+
     }
 }

@@ -6,13 +6,12 @@ import inscryption.carte.CarteFactory;
 
 import java.util.*;
 
-public class Joueur
+public class Joueur extends Entite
 {
     private final int NB_MIN_MAIN = 4;
 
     private List<CarteAnimal> m_main = new ArrayList<CarteAnimal>();
     private Pioche m_pioche = new Pioche();
-    private int m_score;
     private int m_nb_espace_nom_carte;
 
     private int m_nbOsTotal;
@@ -103,9 +102,7 @@ public class Joueur
                 }
                 // Affichage final des cartes que l'on peut sacrifier
                 System.out.println(texteInfosCartes + "\n Indiquez votre choix : \n" + texteActionsPossibles);
-
-
-
+                
             }
         }
         else if (c.getOs() >= 0)
@@ -152,8 +149,6 @@ public class Joueur
         m_nbOsTotal++;
         m_nbGouttesDeSangTotal++;
 
-
-
     }
 
     public void afficherTour(Plateau p)
@@ -161,5 +156,7 @@ public class Joueur
         p.afficherPlateau();
         afficherMain();
     }
+
+    public void mettreAJourOs(int valeur) { m_nbOsTotal++; }
 
 }
