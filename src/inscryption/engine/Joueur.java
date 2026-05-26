@@ -30,7 +30,9 @@ public class Joueur extends Entite
 
     public CarteAnimal getCarteMain(int index) { return m_main.get(index); }
 
-    public void retirerCarteMain(int index) { m_main.remove(index); }
+    public void retirerCarteMain(CarteAnimal c) {
+        m_main.remove(c);
+    }
 
     public void afficherMain()
     {
@@ -61,6 +63,7 @@ public class Joueur extends Entite
         {
             p.positionnerCarte(c,pos);
             afficherTour(p);
+            retirerCarteMain(c);
             return;
         }
 
@@ -72,6 +75,7 @@ public class Joueur extends Entite
             {
                 p.positionnerCarte(c,pos);
                 afficherTour(p);
+                retirerCarteMain(c);
             }
             else
             {
@@ -107,6 +111,7 @@ public class Joueur extends Entite
             {
                 p.positionnerCarte(c,pos);
                 afficherTour(p);
+                retirerCarteMain(c);
             }
             // Sinon, on dit au joueur qu'il ne peut pas placer la carte
             else

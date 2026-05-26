@@ -9,7 +9,7 @@ public class CarteAnimal extends Carte
     private int m_gouttesDeSang;
     private int m_os;
     private boolean m_bVolant;
-    private Optional<Pouvoir> m_pouvoir;
+    //private Optional<Pouvoir> m_pouvoir;
 
     public CarteAnimal(String nom, int pv, int attaque, int gouttes,
                        int os, boolean volant) {

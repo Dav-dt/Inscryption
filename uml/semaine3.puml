@@ -18,18 +18,18 @@ package inscryption
             m_adversaire : Adversaire
             m_plateau : Plateau
             +<<create>> Game()
-            +lancerJeu() : void
+            +lancerJeu()
             +mettreAJourEtat()
             +mettreAJourPlateau()
         }
 
         class Joueur
         {
-            -m_main : List<CarteAnimal>
+            -m_main : CarteAnimal[*]
             -m_pioche : Pioche
             -NB_MIN_MAIN : Integer
             +<<create>> Joueur()
-            +{static}ACTIONs_POSSIBLES : List<String>
+            +{static}ACTIONs_POSSIBLES : String[*]
             +getCarteMain(index : Integer) : CarteAnimal
             +retirerCarteMain(index : Integer)
             +afficherMain()
@@ -66,7 +66,7 @@ package inscryption
             -m_plateau : Map<Position, Optional<Carte>>
             +<<create>> Plateau()
             +getNB_CASES_DE_JEU() : Integer
-            +afficherPlateau() : void
+            +afficherPlateau()
             +positionnerCarte(p: Position)
             +retirerCarteA(p: Position)
             +afficherPlateau()
@@ -76,7 +76,7 @@ package inscryption
         class Adversaire
         {
             -NB_MIN_MAIN: Integer
-            -m_main : List<CarteAnimal>
+            -m_main : CarteAnimal[*]
             -m_pioche : Pioche
             +<<create>> Adversaire
             +peutPlacerCarte(c: CarteAnimal, p: Plateau, pos: Position) : Boolean
@@ -95,7 +95,7 @@ package inscryption
 
         class Input
         {
-            -INPUTS_POSSIBLES: List<InputsPossibles>
+            -INPUTS_POSSIBLES: InputsPossibles[*]
             -m_input : String
 
             +<<create>> Input(input: String)
@@ -209,13 +209,13 @@ package inscryption
 
 class Main
 {
-    +main(String[]) : void
+    +main(String[])
 }
 
-CarteFactory --|> TypeAnimal : <<uses>>
-CarteFactory --|> TypeObstacle : <<uses>>
-CarteFactory --|> CarteAnimal : <<uses>>
-CarteFactory --|> CarteObstacle : <<uses>>
+CarteFactory .> TypeAnimal : <<uses>>
+CarteFactory .> TypeObstacle : <<uses>>
+CarteFactory .> CarteAnimal : <<uses>>
+CarteFactory .> CarteObstacle : <<uses>>
 
 CarteAnimal --|> Carte : <<extends>>
 CarteObstacle --|> Carte : <<extends>>
@@ -223,14 +223,14 @@ CarteObstacle --|> Carte : <<extends>>
 
 Joueur --|> Entite : <<extends>>
 Adversaire --|> Entite : <<extends>>
-Game --> Joueur : <<uses>>
-Game --> Plateau : <<uses>>
-Game --> Input : <<uses>>
-Input --> InputsPossibles : <<uses>>
-Joueur --> CarteAnimal : <<has>>
-Joueur --> Pioche : <<has>>
-Plateau --> Carte : <<has>>
-Plateau --|> Position : <<uses>>
-Main --> Game : <<uses>>
+Game .> Joueur : <<uses>>
+Game .> Plateau : <<uses>>
+Game .> Input : <<uses>>
+Input .> InputsPossibles : <<uses>>
+Joueur .> CarteAnimal : <<has>>
+Joueur .> Pioche : <<has>>
+Plateau .> Carte : <<has>>
+Plateau .> Position : <<uses>>
+Main .> Game : <<uses>>
 
 @enduml
