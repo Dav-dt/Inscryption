@@ -10,5 +10,8 @@ public enum TypeAnimal {
     HERMINE,
     LOUVETEAU,
     LOUP,
-    PUNAISE
+    PUNAISE,
+    ELAN,
+    VIPERE,
+    PORC_EPIC
 }

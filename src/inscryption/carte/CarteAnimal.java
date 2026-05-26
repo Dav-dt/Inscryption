@@ -5,10 +5,11 @@ import java.util.Optional;
 
 public class CarteAnimal extends Carte
 {
-    protected int m_attk;
-    protected int m_gouttesDeSang;
-    protected int m_os;
-    protected boolean m_bVolant;
+    private int m_attk;
+    private int m_gouttesDeSang;
+    private int m_os;
+    private boolean m_bVolant;
+    private Optional<Pouvoir> m_pouvoir;
 
     public CarteAnimal(String nom, int pv, int attaque, int gouttes,
                        int os, boolean volant) {

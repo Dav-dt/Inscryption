@@ -23,8 +23,8 @@ public class CarteFactory
             case GRIZZLY:
                 return new CarteAnimal(
                         "Grizzly",
-                        4,
                         6,
+                        4,
                         3,
                         0,
                         false);
@@ -32,8 +32,8 @@ public class CarteFactory
             case COYOTE:
                 return new CarteAnimal(
                         "Coyote",
-                        2,
                         1,
+                        2,
                         0,
                         4,
                         false);
@@ -41,8 +41,8 @@ public class CarteFactory
             case MOINEAU:
                 return new CarteAnimal(
                         "Moineau",
-                        1,
                         2,
+                        1,
                         1,
                         0,
                         true);
@@ -50,8 +50,8 @@ public class CarteFactory
             case CORBEAU:
                 return new CarteAnimal(
                         "Corbeau",
-                        2,
                         3,
+                        2,
                         2,
                         0,
                         true);
@@ -60,7 +60,7 @@ public class CarteFactory
                 return new CarteAnimal(
                         "Ecureuil",
                         1,
-                        1,
+                        0,
                         0,
                         0,
                         false);
@@ -68,8 +68,8 @@ public class CarteFactory
             case HERMINE:
                 return new CarteAnimal(
                         "Hermine",
-                        1,
                         3,
+                        1,
                         1,
                         0,
                         false);
@@ -86,8 +86,8 @@ public class CarteFactory
             case LOUP:
                 return new CarteAnimal(
                         "Loup",
-                        3,
                         2,
+                        3,
                         2,
                         0,
                         false);
@@ -95,10 +95,37 @@ public class CarteFactory
             case PUNAISE:
                 return new CarteAnimal(
                         "Punaise",
+                        2,
+                        1,
+                        0,
+                        2,
+                        false);
+
+            case ELAN:
+                return new CarteAnimal(
+                        "Elan",
+                        4,
+                        2,
+                        2,
+                        0,
+                        false);
+
+            case VIPERE:
+                return new CarteAnimal(
+                        "Vipère",
+                        1,
                         1,
                         2,
                         0,
+                        false);
+
+            case PORC_EPIC:
+                return new CarteAnimal(
+                        "Porc-épic",
                         2,
+                        1,
+                        1,
+                        0,
                         false);
             default:
                 return null; //jamais on arrivera ici
