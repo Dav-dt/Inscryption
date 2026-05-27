@@ -54,7 +54,6 @@ public class Joueur extends Entite
 
     public void placerCarte(CarteAnimal c, Plateau p, Position pos) throws Exception
     {
-        System.out.println("gouttes : " + m_nbGouttesDeSangTotal);
         if ( !peutPlacerCarte(c, p, pos) )
         {
             System.out.println("Emplacement invalide ! ");
@@ -141,14 +140,14 @@ public class Joueur extends Entite
             }
             // Sinon on lui propose les cartes qu'il souhaite sacrifier
             else {
-                System.out.println("Quelle(s) carte(s) voulez-vous sacrifier ?\n");
+                System.out.println("\nQuelle(s) carte(s) voulez-vous sacrifier ?\n");
                 // Affichage final des cartes que l'on peut sacrifier
                 int j = 1;
                 for(Carte carte : listeCartesSacrifiables){
                     texteInfosCartes += "[" + j + "] " + carte.getToutesInfosCarte() + "\n";
                     j++;
                 }
-                System.out.println("Indiquez votre choix : \n" + texteInfosCartes);
+                System.out.println("Indiquez votre choix : " + texteInfosCartes);
 
                 // Scanner
                 Scanner sc = new Scanner(System.in);
@@ -169,7 +168,6 @@ public class Joueur extends Entite
 
                         listeCartesSacrifiables.remove(listeCartesSacrifiables.get(emplacement));
                         listesPositionCartesSacrifiables.remove(listesPositionCartesSacrifiables.get(emplacement));
-                        System.out.println("\n" + listeCartesSacrifiables.size());
                     }
                 }
                 // On vérifie si les conditions sont remplies pour le sacrifice
