@@ -28,6 +28,7 @@ public class Joueur extends Entite
         m_nbOsTotal = 0;
     }
 
+    public int getNbCarteMain(){ return m_main.size(); }
     public CarteAnimal getCarteMain(int index) { return m_main.get(index); }
 
     public void retirerCarteMain(CarteAnimal c) {
