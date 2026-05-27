@@ -1,12 +1,13 @@
 package inscryption.carte;
 
+import java.util.List;
 import java.util.Optional;
 
 public abstract class Carte
 {
     protected String m_nom;
     protected int m_pv;
-    protected Optional<TypePouvoir> m_pouvoir;
+    protected List<TypePouvoir> m_pouvoirs;
 
     // 9 = nb max de caractères (louveteau) -> 10 caractère pour un espace au moins
     protected final int NB_MAX_CARACTERE = 9;
@@ -19,12 +20,7 @@ public abstract class Carte
 
     public boolean detientPouvoir(TypePouvoir pv)
     {
-        if ( m_pouvoir.isPresent() )
-        {
-            if ( m_pouvoir.get() == pv )
-                return true;
-        }
-        return false;
+        return m_pouvoirs.contains(pv);
     }
 
     public abstract int attaquer(Optional<Carte> carteAdverse);

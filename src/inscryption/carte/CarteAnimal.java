@@ -1,6 +1,6 @@
 package inscryption.carte;
 
-import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class CarteAnimal extends Carte
@@ -17,7 +17,7 @@ public class CarteAnimal extends Carte
         m_gouttesDeSang = gouttes;
         m_os = os;
         m_bVolant = volant;
-        m_pouvoir = Optional.empty(); //pas de pvr par défaut
+        m_pouvoirs = new ArrayList<TypePouvoir>();
 
     }
     //autre constr avec pouvoir si la carte en a un
@@ -28,7 +28,8 @@ public class CarteAnimal extends Carte
         m_gouttesDeSang = gouttes;
         m_os = os;
         m_bVolant = volant;
-        m_pouvoir = Optional.of(pouv);
+        m_pouvoirs = new ArrayList<TypePouvoir>();
+        m_pouvoirs.add(pouv);
 
     }
 
@@ -83,8 +84,19 @@ public class CarteAnimal extends Carte
                 m_pv+ "    Att: "+m_attk+
                 "   Gouttes de sang: "+ m_gouttesDeSang+
                 "   Os: "+m_os +
-                (m_bVolant ? "   Volant" : "   Non Volant") +
-                (m_pouvoir.isPresent() ? "  "+m_pouvoir.toString() :
-                        " Aucun pouvoir") ;
+                (m_bVolant ? "   Volant " : "   Non Volant ") +
+                afficherPouvoirs() ;
+    }
+
+    private String afficherPouvoirs()
+    {
+        if ( m_pouvoirs.isEmpty() )
+            return "Aucun Pouvoir";
+        String res = "";
+        for ( TypePouvoir pv : m_pouvoirs )
+        {
+            res += pv.name() + " ";
+        }
+        return res;
     }
 }
