@@ -8,7 +8,7 @@ import static java.util.Map.entry;
 
 public class Plateau
 {
-    private final int NB_CARTES_PAR_LIGNE = 4;
+    public static final int NB_CARTES_PAR_LIGNE = 4;
     private final int NB_MAX_OBSTACLE = 2;
 
     private final int NB_CASES_PLATEAU = 8;

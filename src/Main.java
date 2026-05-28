@@ -1,12 +1,23 @@
 import inscryption.engine.Game;
 
-public class Main
-{
+public class Main {
     public static void main(String[] args) throws Exception {
+        afficherLogo();
         System.out.println("Another challenger... It has been ages.");
-
         Game jeu = new Game();
         jeu.lancerJeu();
 
+    }
+
+    public static void afficherLogo() {
+        System.out.println("_________ _        _______  _______  _______           _______ __________________ _______  _       \n" +
+                "\\__   __/( (    /|(  ____ \\(  ____ \\(  ____ )|\\     /|(  ____ )\\__   __/\\__   __/(  ___  )( (    /|\n" +
+                "   ) (   |  \\  ( || (    \\/| (    \\/| (    )|( \\   / )| (    )|   ) (      ) (   | (   ) ||  \\  ( |\n" +
+                "   | |   |   \\ | || (_____ | |      | (____)| \\ (_) / | (____)|   | |      | |   | |   | ||   \\ | |\n" +
+                "   | |   | (\\ \\) |(_____  )| |      |     __)  \\   /  |  _____)   | |      | |   | |   | || (\\ \\) |\n" +
+                "   | |   | | \\   |      ) || |      | (\\ (      ) (   | (         | |      | |   | |   | || | \\   |\n" +
+                "___) (___| )  \\  |/\\____) || (____/\\| ) \\ \\__   | |   | )         | |   ___) (___| (___) || )  \\  |\n" +
+                "\\_______/|/    )_)\\_______)(_______/|/   \\__/   \\_/   |/          )_(   \\_______/(_______)|/    )_)\n" +
+                "                                                                                                   ");
     }
 }

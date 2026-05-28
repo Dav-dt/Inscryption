@@ -37,7 +37,7 @@ public final class Game
                 if ( tour == 2 ) //execution de croissance
                     executerPouvoirCroissance();
 
-                m_adversaire.afficherProchain(m_plateau);
+                m_adversaire.afficherProchain();
                 m_plateau.afficherPlateau();
                 m_joueur.afficherMain();
 

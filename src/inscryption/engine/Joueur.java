@@ -9,8 +9,6 @@ import java.util.*;
 
 public class Joueur extends Entite
 {
-    private final int NB_MIN_MAIN = 4;
-
     private List<CarteAnimal> m_main = new ArrayList<CarteAnimal>();
     private Pioche m_pioche = new Pioche();
 

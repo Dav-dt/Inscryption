@@ -4,6 +4,7 @@ package inscryption.engine;
 
 public abstract class Entite
 {
+    protected final int NB_MIN_MAIN = 4;
     protected int m_score;
     protected int m_nbOsTotal;
     protected int m_nbGouttesDeSangTotal;
