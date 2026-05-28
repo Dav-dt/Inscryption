@@ -12,4 +12,8 @@ public abstract class Entite
     public int getScore() { return m_score; }
     public void modifierScore(int valeur) { m_score = valeur; }
 
+    public void afficherScore(){
+        System.out.println("Score : " + this.m_score + "\n");
+    }
+
 }

@@ -214,6 +214,12 @@ public class Joueur extends Entite
         afficherMain();
     }
 
+
     public void mettreAJourOs(int valeur) { m_nbOsTotal++; }
+
+    public void resetStatsJoueur(){
+        m_nbOsTotal = 0;
+        m_nbGouttesDeSangTotal = 0;
+    }
 
 }
