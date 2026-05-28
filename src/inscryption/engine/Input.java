@@ -2,7 +2,6 @@ package inscryption.engine;
 
 import inscryption.carte.CarteAnimal;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class Input
         m_input = newInput;
     }
 
-    public boolean tryExecuteInput(Joueur j, Plateau p) throws Exception {
+    public boolean tryExecuteInput(Joueur j, Plateau p, Game g) throws Exception {
         //converti la cmd en liste de mots bien formatee
         String[] parts = m_input.trim().split("\\s+");
         if ( parts.length == 0 )
@@ -43,14 +42,23 @@ public class Input
         switch ( InputsPossibles.valueOf(cmd) )
         {
             case FIN:
+                g.autoriserPioche();
                 return true; // on verra plus tard
 
             case PIOCHER:
-                if ( parts.length != 1 )
-                    return false;
+                if ( g.piochePossible() )
+                {
+                    g.interdirPioche();
+                    if ( parts.length != 1 )
+                        return false;
 
-                j.piocher();
-                return true;
+                    j.piocher();
+                    return true;
+                }
+                else {
+                    System.out.println("Vous avez déja pioché !");
+                    return false;
+                }
 
             case PLACER:
                 if (parts.length != 3)

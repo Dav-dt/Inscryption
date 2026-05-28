@@ -5,7 +5,6 @@ import inscryption.carte.CarteFactory;
 import inscryption.carte.TypeAnimal;
 import inscryption.carte.TypePouvoir;
 
-import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -17,6 +16,11 @@ public final class Game
     Joueur m_joueur = new Joueur();
     Adversaire m_adversaire = new Adversaire();
     Plateau m_plateau = new Plateau();
+    private boolean m_bApioche = false;
+
+    public boolean piochePossible() { return !m_bApioche; }
+    public void interdirPioche() { m_bApioche = true; }
+    public void autoriserPioche() { m_bApioche = false; }
 
 
 
@@ -30,7 +34,6 @@ public final class Game
 
         for ( int partie = 1; partie <= NB_DE_PARTIES; partie++ ) {
             while (m_joueur.getScore() - m_adversaire.getScore() <= NB_DE_POINTS_POUR_GAGNER_PARTIE) {
-
                 if ( tour == 2 ) //execution de croissance
                     executerPouvoirCroissance();
 
@@ -46,8 +49,9 @@ public final class Game
 
                 Scanner sc = new Scanner(System.in);
                 Input input = new Input(sc.nextLine());
-                while (!input.tryExecuteInput(m_joueur, m_plateau)) {
+                while (!input.tryExecuteInput(m_joueur, m_plateau, this)) {
                     input.changerInput(sc.nextLine());
+                    System.out.println("Veuillez entrer des informations valides !");
                 }
 
                 mettreAjourEtat();
