@@ -55,6 +55,12 @@ public class Plateau
         }
     }
 
+    public void reinitialiser()
+    {
+        for ( Position p : m_plateau.keySet() )
+            m_plateau.put(p, Optional.empty());
+    }
+
     public void changerCarte(Position pos,Carte carte)
     { m_plateau.replace(pos, Optional.of(carte)); }
 
@@ -85,54 +91,31 @@ public class Plateau
         Position[] ligneJoueur = {Position.B1, Position.B2, Position.B3,
                 Position.B4};
 
-        System.out.print("\n\nAdversaire : ");
+        System.out.println("#=========================================");
+        System.out.println("\n\nAdversaire : ");
 
         for ( int i = 0; i < NB_CARTES_PAR_LIGNE; i++ )
         {
-            Position pos = ligneAdversaire[i];
-            Optional<Carte> carteOpt = m_plateau.get(pos);
-
-            System.out.print(" || ");
-
-            if (carteOpt.isPresent())
-            {
-                Carte carte = carteOpt.get();
-
-                System.out.print(carte.getInfos());
-            }
-            else
-            {
-                System.out.print(pos.name());
-            }
-
-            System.out.print(" || ");
+            System.out.println("["+ligneAdversaire[i]+"] "+
+                    (m_plateau.get(ligneAdversaire[i]).isPresent() ?
+                            m_plateau.get(ligneAdversaire[i]).get().getToutesInfosCarte() :
+                            "Aucun"));
         }
 
         System.out.println();
-        System.out.print("Joueur     : ");
+        System.out.println("#=========================================");
+        System.out.println("Joueur     : ");
 
         for ( int i = 0; i < NB_CARTES_PAR_LIGNE; i++ )
         {
-            Position pos = ligneJoueur[i];
-            Optional<Carte> carteOpt = m_plateau.get(pos);
-
-            System.out.print(" || ");
-
-            if (carteOpt.isPresent())
-            {
-                Carte carte = carteOpt.get();
-
-                System.out.print(carte.getInfos());
-            }
-            else
-            {
-                System.out.print(pos.name());
-            }
-
-            System.out.print(" || ");
+            System.out.println("["+ligneJoueur[i]+"] "+
+                    (m_plateau.get(ligneJoueur[i]).isPresent() ?
+                            m_plateau.get(ligneJoueur[i]).get().getToutesInfosCarte() :
+                            "Aucun"));
         }
 
         System.out.println();
+        System.out.println("#=========================================");
     }
 
     public boolean placementPossible(Position pos)

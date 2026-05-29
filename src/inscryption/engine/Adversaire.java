@@ -76,16 +76,14 @@ public class Adversaire extends Entite
 
     public void afficherProchain()
     {
-        System.out.print(" || ");
+        System.out.println("#======Prochaines Actions ==============");
         for (int i = 0; i < m_prochaineAction.length; i++ )
         {
-            if ( m_prochaineAction[i].isPresent() )
-                System.out.print(m_prochaineAction[i].get().getInfos());
-            else
-                System.out.print("Aucun");
-            System.out.print( " || ");
+            System.out.println((m_prochaineAction[i].isPresent() ?
+                    m_prochaineAction[i].get().getInfos()
+                            : "Aucun" )+ "  ----> "+ "A"+(i+1));
         }
-        System.out.println("");
-        System.out.println("    v       v       v       v");
+        System.out.println("#======================================");
+
     }
 }

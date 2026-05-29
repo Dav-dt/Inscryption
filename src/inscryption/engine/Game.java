@@ -33,7 +33,9 @@ public final class Game
 
         for ( int partie = 1; partie <= NB_DE_PARTIES; partie++ ) {
             System.out.println("Partie : "+partie + " -------------------");
-            while ( Math.abs(m_joueur.getScore() - m_adversaire.getScore()) <=
+            System.out.println();
+
+            while ( Math.abs(m_joueur.getScore() - m_adversaire.getScore()) <
                     NB_DE_POINTS_POUR_GAGNER_PARTIE ) {
 
                 if ( tour == 2 ) //execution de croissance
@@ -79,6 +81,19 @@ public final class Game
                 System.out.println("#-----------------------------");
                 tour++;
                 m_finTour = false;
+
+                if ( m_joueur.getScore() - m_adversaire.getScore() >=
+                    NB_DE_POINTS_POUR_GAGNER_PARTIE )
+                {
+                    System.out.println("Partie remportée ");
+                    partiesGagnees++;
+                }
+                else if ( m_adversaire.getScore() - m_joueur.getScore() >=
+                        NB_DE_POINTS_POUR_GAGNER_PARTIE )
+                {
+                    System.out.println("L'adversaire remporte la partie ");
+                }
+
             }
 
             tour = 1;
@@ -151,6 +166,12 @@ public final class Game
                 }
 
         }
+    }
+
+    public void preparerJeu()
+    {
+        m_adversaire.resetScore();
+        m_joueur.resetScore();
     }
 
     public void executerPouvoirCroissance()
