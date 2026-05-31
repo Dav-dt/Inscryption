@@ -13,6 +13,7 @@ public final class Game
     private final int NB_DE_PARTIES = 3;
     private final int NB_DE_PARTIES_POUR_GAGNER = 2;
     private final int NB_DE_POINTS_POUR_GAGNER_PARTIE = 5;
+
     Joueur m_joueur = new Joueur();
     Adversaire m_adversaire = new Adversaire();
     Plateau m_plateau = new Plateau();
@@ -31,13 +32,16 @@ public final class Game
         int partiesGagnees = 0;
         int tour = 1;
 
-        for ( int partie = 1; partie <= NB_DE_PARTIES; partie++ ) {
+        for ( int partie = 1; partie <= NB_DE_PARTIES; partie++ )
+        {
             System.out.println("Partie : "+partie + " -------------------");
             System.out.println();
 
-            while ( Math.abs(m_joueur.getScore() - m_adversaire.getScore()) <
-                    NB_DE_POINTS_POUR_GAGNER_PARTIE ) {
+            preparerJeu(); //bah oui c'est quand même mieux de reset le score
 
+            while ( Math.abs(m_joueur.getScore() - m_adversaire.getScore()) <
+                    NB_DE_POINTS_POUR_GAGNER_PARTIE )
+            {
                 if ( tour == 2 ) //execution de croissance
                     executerPouvoirCroissance();
 
@@ -169,10 +173,14 @@ public final class Game
         }
     }
 
-    public void preparerJeu()
-    {
+    public void preparerJeu() throws Exception {
         m_adversaire.resetScore();
         m_joueur.resetScore();
+        m_adversaire.resetMain();
+        m_joueur.resetMain();
+        m_joueur.resetStats();
+        m_adversaire.resetStats();
+        m_plateau.reinitialiser();
     }
 
     public void executerPouvoirCroissance()

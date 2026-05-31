@@ -16,6 +16,13 @@ public abstract class Entite
     protected Pioche m_pioche = new Pioche();
     protected List<CarteAnimal> m_main = new ArrayList<CarteAnimal>();
 
+    public void resetMain() throws Exception {
+        m_main.clear();
+        m_pioche.regenererPiocheDebutEcureuil();
+        for ( int i = 0; i < NB_MIN_MAIN; i++ )
+            piocher();
+    }
+
     public void piocher() { m_main.add(m_pioche.piocher()); };
     public int getScore() { return m_score; }
     public void modifierScore(int valeur) { m_score += valeur; }
