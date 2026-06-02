@@ -27,6 +27,8 @@ public final class Game
 
     public Game() {};
 
+    public Plateau getPlateau() {return m_plateau;}
+
     public void lancerJeu() throws Exception
     {
         int partiesGagnees = 0;
@@ -74,12 +76,12 @@ public final class Game
                 System.out.println("#-----------------------------");
 
                 executerTourJoueur();
+                executerPouvoirCoureur();
                 mettreAjourPlateau();
-                executerPouvoirCroissance();
 
                 executerTourAdversaire();
+                executerPouvoirCoureur();
                 mettreAjourPlateau();
-                executerPouvoirCroissance();
 
                 System.out.println("#-----------------------------");
                 System.out.println("#Fin Attaques");
@@ -194,6 +196,7 @@ public final class Game
                 {
                     m_plateau.changerCarte(pos,
                             CarteFactory.creerCarteAnimal(TypeAnimal.LOUP));
+                    System.out.println("Louveteau s'est changé en loup !");
                 }
         }
     }
@@ -207,15 +210,25 @@ public final class Game
                 if ( m_plateau.getPlateau().get(pos).get().
                         detientPouvoir(TypePouvoir.COUREUR) )
                 {
+                    String nom =m_plateau.getPlateau().
+                            get(pos).get().getNom();
                     if (m_plateau.deplacementDroitePossible(pos) )
+                    {
                         m_plateau.deplacerCarte(pos,
                                 m_plateau.posADroite(pos));
-
+                        System.out.println(nom+ " se déplace à droite grâce" +
+                                " à son pouvoir COUREUR !");
+                    }
                     else if (m_plateau.deplacementGauchePossible(pos) )
+                    {
                         m_plateau.deplacerCarte(pos,
                                 m_plateau.posAGauche(pos));
+                        System.out.println(nom + " se déplace à gauche grâce" +
+                                " à son pouvoir COUREUR !");
+                    }
 
                     //sinon ne pas bouger
+                    System.out.println("Pouvoir COUREUR : rien ne s'est produit !");
                 }
             }
         }
