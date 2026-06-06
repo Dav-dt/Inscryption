@@ -1,10 +1,9 @@
 package inscryption.engine;
 
-import inscryption.carte.Carte;
-import inscryption.carte.CarteFactory;
-import inscryption.carte.TypeAnimal;
-import inscryption.carte.TypePouvoir;
+import inscryption.carte.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -247,6 +246,25 @@ public final class Game
     {
         System.out.println("=============Pierre de Sacrifice=============");
         System.out.println("Il est l'heure de sacrifier une carte !");
+
+        List<CarteAnimal> choixPossibles = new ArrayList<CarteAnimal>();
+        for ( Position pos : m_plateau.getPlateau().keySet() )
+        {
+            if ( pos.name().startsWith("B") &&
+                 m_plateau.getPlateau().get(pos).isPresent()
+            )
+                if ( m_plateau.getPlateau().get(pos).get().estAnimal() )
+                    choixPossibles.add( (CarteAnimal)
+                            m_plateau.getPlateau().get(pos).get() );
+
+        }
+
+        int choix = 0;
+
+        while ( choix > choixPossibles.size() && choix <= 0 )
+        {
+            //
+        }
 
 
 
