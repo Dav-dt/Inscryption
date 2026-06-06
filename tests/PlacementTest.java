@@ -23,5 +23,15 @@ public class PlacementTest
 
     }
 
+    @Test
+    public void placerTest2()
+    {
+        Plateau p = new Plateau();
+        CarteAnimal ca = CarteFactory.creerCarteAnimalRandom();
+        p.retirerCarteA(Position.A1); // si il y a obstacle
+
+        assertTrue(p.placementPossible(Position.A1));
+    }
+
 
 }

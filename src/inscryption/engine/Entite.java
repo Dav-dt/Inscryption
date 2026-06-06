@@ -18,17 +18,19 @@ public abstract class Entite
 
     public void resetMain() throws Exception {
         m_main.clear();
-        m_pioche.regenererPiocheDebutEcureuil();
+        m_pioche = new Pioche();
         for ( int i = 0; i < NB_MIN_MAIN; i++ )
             piocher();
     }
 
+    public void ajouterCarteMain(CarteAnimal c) { m_main.add(c); }
     public void piocher() { m_main.add(m_pioche.piocher()); };
     public int getScore() { return m_score; }
     public void modifierScore(int valeur) { m_score += valeur; }
     public void resetScore() { m_score = 0; }
     public int getNbOsTotal() { return m_nbOsTotal; }
     public int getNbGouttesDeSang() { return m_nbGouttesDeSangTotal; }
+    public List<CarteAnimal> getMain() { return m_main; }
 
     public Entite()
     {
