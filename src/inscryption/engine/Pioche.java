@@ -57,15 +57,6 @@ public class Pioche
         return m_pioche.size();
     }
 
-    public void regenererPiocheAleatoire()
-    {
-        viderPioche();
-        for (int i = 0; i < NB_MAX_CARTES; i++)
-        {
-            m_pioche.push(CarteFactory.creerCarteAnimalRandom());
-        }
-    }
-
     public void viderPioche() {
         m_pioche.clear();
     }

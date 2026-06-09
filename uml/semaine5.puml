@@ -284,15 +284,22 @@ CarteAnimal --|> Carte : <<extends>>
 CarteObstacle --|> Carte : <<extends>>
 
 Pioche .> CarteFactory : <<uses>>
-Pioche "*"*-->"\n-m_pioche" CarteAnimal : <<stores>>
+Pioche "1"*-->"0..*\n-m_pioche" CarteAnimal : <<stores>>
+Adversaire "1"*-->"0..*\n-m_pioche" CarteAnimal : <<stores>>
+
 Joueur --|> Entite : <<extends>>
 Adversaire --|> Entite : <<extends>>
-Game .> Joueur : <<uses>>
-Game .> Plateau : <<uses>>
+
+Joueur "1"o-->"1\n-m_joueur" Game : <<plays in>>
+Adversaire "1"o-->"1\n-m_adversaire" Game : <<plays in>>
+Plateau "1"o-->"1\n-m_plateau" Game : <<is placed in>>
 Game .> Input : <<uses>>
 Input .> InputsPossibles : <<uses>>
-Joueur .> CarteAnimal : <<has>>
-Pioche "1" o--> "2..*\n-m_pioche" Joueur : <<is used by>>
+Joueur "1"o-->"0..*" CarteAnimal : <<has>>
+Pioche "1" o--> "1\n-m_pioche" Joueur : <<is used by>>
+Pioche "1" o--> "1\n-m_pioche" Adversaire : <<is used by>>
+Pioche "1" o--> "1\n-m_pioche" Entite : <<is used by>>
+
 Plateau .> Carte : <<has>>
 Plateau .> Position : <<uses>>
 Main -up.> Game : <<calls>>
