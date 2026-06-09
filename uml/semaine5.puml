@@ -290,17 +290,18 @@ Adversaire "1"*-->"0..*\n-m_pioche" CarteAnimal : <<stores>>
 Joueur --|> Entite : <<extends>>
 Adversaire --|> Entite : <<extends>>
 
-Joueur "1"o-->"1\n-m_joueur" Game : <<plays in>>
-Adversaire "1"o-->"1\n-m_adversaire" Game : <<plays in>>
-Plateau "1"o-->"1\n-m_plateau" Game : <<is placed in>>
+Game "1"*-->"1\n-m_joueur" Joueur : <<features>>
+Game "1"*-->"1\n-m_adversaire" Adversaire : <<features>>
+Game "1"*-->"1\n-m_plateau" Plateau : <<has a>>
 Game .> Input : <<uses>>
 Input .> InputsPossibles : <<uses>>
 Joueur "1"o-->"0..*" CarteAnimal : <<has>>
-Pioche "1" o--> "1\n-m_pioche" Joueur : <<is used by>>
-Pioche "1" o--> "1\n-m_pioche" Adversaire : <<is used by>>
-Pioche "1" o--> "1\n-m_pioche" Entite : <<is used by>>
 
-Plateau .> Carte : <<has>>
+Entite "1" o--> "1\n-m_pioche" Pioche : <<draws from>>
+
+Entite "1"o-->"0..*\n-m_main" CarteAnimal : <<can have>>
+
+Plateau "1"o-->"0..*\n-m_plateau" Carte : <<has>>
 Plateau .> Position : <<uses>>
 Main -up.> Game : <<calls>>
 
