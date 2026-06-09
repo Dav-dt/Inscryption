@@ -77,7 +77,6 @@ public class Joueur extends Entite
         boolean sacrifier = true;
         int nbCartes = 0;
 
-        HashMap<Position, Carte> cartesSacrifiables = new HashMap<>();
         List<Carte> listeCartesSacrifiables = new ArrayList<>();
         List<Position> listesPositionCartesSacrifiables = new ArrayList<>();
 
@@ -95,7 +94,6 @@ public class Joueur extends Entite
                     listesPositionCartesSacrifiables.add(entry.getKey());
                     System.out.println(entry.getKey());
 
-                    cartesSacrifiables.put(entry.getKey(), entry.getValue().get());
                     nbCartes++;
                 }
             }
@@ -117,21 +115,11 @@ public class Joueur extends Entite
                 System.out.println("\nQuelle(s) carte(s) voulez-vous sacrifier ?\n");
                 // Affichage final des cartes que l'on peut sacrifier
                 int j = 1;
-                /*
-                for(Map.Entry<Position, Carte> entry : cartesSacrifiables.entrySet())
-                {
-                    texteInfosCartes += "[" + j + "] " + entry.getValue().getToutesInfosCarte() + "\n";
-                    j++;
-                }
-                */
-
 
                 for(Carte carte : listeCartesSacrifiables){
                     texteInfosCartes += "[" + j + "] " + carte.getToutesInfosCarte() + "\n";
                     j++;
                 }
-
-
 
                 System.out.println("Indiquez votre choix : " + texteInfosCartes);
                 // Scanner
@@ -140,7 +128,7 @@ public class Joueur extends Entite
 
 
                 // on parcourt les cartes sacrifiables pour les afficher et que le joueur choisisse quelle(s) carte(s) il souhaite sacrifier
-                for(int i = 0; i < cartesSacrifiables.size(); i++)
+                for(int i = 0; i < listeCartesSacrifiables.size(); i++)
                 {
                     if (Integer.parseInt(choix) <= listeCartesSacrifiables.size())
                     {
@@ -167,7 +155,7 @@ public class Joueur extends Entite
                 // On vérifie si les conditions sont remplies pour le sacrifice
                 // Si le nombre de gouttes de sang est suffisant
 
-                if (c.getGouttesDeSang() <= m_nbGouttesDeSangTotal || cartesSacrifiables.isEmpty())
+                if (c.getGouttesDeSang() <= m_nbGouttesDeSangTotal || listeCartesSacrifiables.isEmpty())
                 {
                     p.positionnerCarte(c, pos);
                     retirerCarteMain(c);

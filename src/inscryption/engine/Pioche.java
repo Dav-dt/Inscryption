@@ -45,6 +45,10 @@ public class Pioche
 
     public CarteAnimal piocher()
     {
+        if (m_pioche.isEmpty()) {
+            System.out.println("La pioche est vide ! Un écureuil vous est attribué...");
+            return CarteFactory.creerCarteAnimal(TypeAnimal.ECUREUIL);
+        }
         return m_pioche.pop();
     }
 

@@ -283,7 +283,8 @@ Carte .> TypePouvoir : <<uses>>
 CarteAnimal --|> Carte : <<extends>>
 CarteObstacle --|> Carte : <<extends>>
 
-Pioche "1"*-->"*\n" CarteFactory : <<belongs to>>
+Pioche .> CarteFactory : <<uses>>
+Pioche "*"*-->"\n-m_pioche" CarteAnimal : <<stores>>
 Joueur --|> Entite : <<extends>>
 Adversaire --|> Entite : <<extends>>
 Game .> Joueur : <<uses>>

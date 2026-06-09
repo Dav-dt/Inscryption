@@ -47,7 +47,6 @@ public class Adversaire extends Entite
         Position[] ligneB = {Position.B1, Position.B2,
                 Position.B3, Position.B4};
 
-        //mauvaise stratégie juste pour tester
         for ( int i = 0; i < m_prochaineAction.length; i++ ) {
             if ( m_prochaineAction[i].isEmpty() && !m_main.isEmpty() )
             {
