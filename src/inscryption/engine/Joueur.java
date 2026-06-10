@@ -84,10 +84,8 @@ public class Joueur extends Entite
                 if (entry.getValue().isPresent() && entry.getValue().get().estAnimal()) {
                     // Ajouter la carte à la liste
                     listeCartesSacrifiables.add(entry.getValue().get());
-                    System.out.println(entry.getValue().get());
                     // Ajouter la position corrspondante
                     listesPositionCartesSacrifiables.add(entry.getKey());
-                    System.out.println(entry.getKey());
 
                     nbCartes++;
                 }
@@ -119,20 +117,36 @@ public class Joueur extends Entite
                 System.out.println("Indiquez votre choix : " + texteInfosCartes);
                 // Scanner
                 Scanner sc = new Scanner(System.in);
-                String choix = sc.nextLine();
+                int choix;
+
+                while (true) {
+                    if (sc.hasNextInt()) {
+                        choix = sc.nextInt();
+                        sc.nextLine(); // vide le retour à la ligne
+
+                        if (choix >= 1 && choix <= listeCartesSacrifiables.size()) {
+                            break;
+                        }
+
+                        System.out.println("Choix hors limites !");
+                    } else {
+                        System.out.println("Veuillez entrer un entier !");
+                        sc.nextLine(); // consomme l'entrée invalide
+                    }
+                }
 
 
                 // on parcourt les cartes sacrifiables pour les afficher et que le joueur choisisse quelle(s) carte(s) il souhaite sacrifier
                 for(int i = 0; i < listeCartesSacrifiables.size(); i++)
                 {
-                    if (Integer.parseInt(choix) <= listeCartesSacrifiables.size())
+                    if (choix <= listeCartesSacrifiables.size())
                     {
                         // Augmente le nombre de gouttes de sang
                         m_nbGouttesDeSangTotal++;
                         m_nbOsTotal++;
 
                         // Enlève la carte dans la liste à sacrifier
-                        int emplacement = Integer.parseInt(choix) - 1;
+                        int emplacement = choix - 1;
                         //System.out.println(listesPositionCartesSacrifiables.get(emplacement));
                         //System.out.println(emplacement);
 
