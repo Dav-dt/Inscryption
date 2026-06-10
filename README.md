@@ -1,5 +1,11 @@
 # Fonctionnalités implémentées
 
+## Information importante
+
+Nous utilisons la version **java 25 SDK** de Intellij Idea.
+
+Certaines fonctionnalités risquent de ne pas marcher si on n'utilise pas cette version de l'IDE.
+
 ## Tests fonctionnels
 
 - [x] l'attaque d'une carte,
